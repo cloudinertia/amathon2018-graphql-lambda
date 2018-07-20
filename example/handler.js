@@ -1,11 +1,11 @@
 // const server = require("apollo-server-lambda");
 var { graphqlExpress } = require("apollo-server-express");
 var bodyParser = require("body-parser");
-var schema = require("./src/schema.js");
+var schema = require("./src/schema");
 
-// // if (process.env.NODE_ENV === "sls") {
-// //   schema = "./src/" + process.env.NAME + "/index.js";
-// // }
+// if (process.env.NODE_ENV === "sls") {
+//   schema = "./src/" + process.env.NAME + "/index.js";
+// }
 
 // // const app = express();
 
