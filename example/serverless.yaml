@@ -1,25 +1,42 @@
-service: serverless-graphql-rest
-
-frameworkVersion: ">=1.21.0 <2.0.0"
+service: "amathon-hands-on-jinho1"
 
 provider:
-  name: jinho
+  name: aws
+  profile: jinho
   runtime: nodejs8.10
   stage: dev
   region: ap-northeast-2
 
 plugins:
-  - serverless-offline
+    - serverless-offline
+
+
+package:
+  exclude:
+    - dist/assets/**
+    - public/**
+    - tests/**
+  include:
+    - dist
+    - src
+
+functions:
+  graphql:
+    handler: handler.graphql
+    memorySize: 512
+    timeout: 5
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
+
+
 
 custom:
   serverless-offline:
     port: 4000
-
-functions:
-  graphql:
-    handler: handler.graphqlHandler
-    events:
-    - http:
-        path: graphql
-        method: post
-        cors: true

@@ -13,4 +13,4 @@ const resolvers = {
   Query: { books1: () => books1 }
 };
 
-export default resolvers;
+module.exports = resolvers;

@@ -1,19 +1,20 @@
-import fs from "fs";
+const fs = require("fs");
+const { makeExecutableSchema, mergeSchemas } = require("graphql-tools");
 const files = fs.readdirSync(__dirname);
 const dirs = files.filter(file => {
   return !/.+\.js/g.test(file);
 });
 
-import { makeExecutableSchema, mergeSchemas } from "graphql-tools";
 const schemas = [];
 dirs.forEach(dir => {
+  console.log(require("./" + dir + "/typeDefs"));
   const schema = makeExecutableSchema({
-    typeDefs: require("./" + dir + "/typeDefs").default,
-    resolvers: require("./" + dir + "/resolvers").dafault
+    typeDefs: require("./" + dir + "/typeDefs"),
+    resolvers: require("./" + dir + "/resolvers")
   });
   schemas.push(schema);
 });
 
 const resultschema = mergeSchemas({ schemas });
 
-export default resultschema;
+module.exports = resultschema;
