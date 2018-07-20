@@ -5,6 +5,9 @@ provider:
   runtime: nodejs8.10
   stage: ${opt:stage}
   region: ap-northeast-2
+  environment:
+    NODE_ENV: ${opt:stage}
+    ASSETS_URL: "https://s3.ap-northeast-2.amazonaws.com/amathon-hands-on-${opt:stage}"
 
 functions:
   graphql:
@@ -51,12 +54,7 @@ functions:
 
 package:
   exclude:
-    - dist/assets/**
-    - public/**
-    - tests/**
-  include:
-    - dist
-    - src
+    - schemas//**
 
 plugins:
   - serverless-offline
@@ -64,3 +62,4 @@ plugins:
 custom:
   serverless-offline:
     port: 4000
+

@@ -1,10 +1,23 @@
-service: "amathon-hands-on"
+service: "amathon-hands-on-jinho1"
 
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${opt:stage}
+  stage: dev
   region: ap-northeast-2
+
+plugins:
+    - serverless-offline
+
+
+package:
+  exclude:
+    - dist/assets/**
+    - public/**
+    - tests/**
+  include:
+    - dist
+    - src
 
 functions:
   graphql:
@@ -33,33 +46,6 @@ functions:
           path: /testdic/{proxy+}
           method: ANY
           cors: true
-  testtest:
-    handler: src/testtest/handler.graphql
-    memorySize: 512
-    timeout: 5
-    events:
-      - http:
-          path: /testtest
-          method: ANY
-          cors: true
-      - http:
-          path: /testtest/{proxy+}
-          method: ANY
-          cors: true
-
-
-
-package:
-  exclude:
-    - dist/assets/**
-    - public/**
-    - tests/**
-  include:
-    - dist
-    - src
-
-plugins:
-  - serverless-offline
 
 custom:
   serverless-offline:
