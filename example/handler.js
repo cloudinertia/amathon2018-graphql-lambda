@@ -22,10 +22,10 @@ import "babel-polyfill";
 import { graphqlLambda, graphiqlLambda } from "apollo-server-lambda";
 import lambdaPlayground from "graphql-playground-middleware-lambda";
 
-let schema = "./schema";
+let schema = "./src/schema";
 
 if (process.env.NODE_ENV === "sls") {
-  schema = "./" + process.env.NAME + "/index.js";
+  schema = "./src/" + process.env.NAME + "/index.js";
 }
 
 exports.graphqlHandler = function graphqlHandler(event, context, callback) {
