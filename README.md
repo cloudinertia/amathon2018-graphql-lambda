@@ -46,7 +46,7 @@ Before start
 - check your AWS Credention if you have AWS Profile change [serverless.yaml]() of profile
 - Change schema if you want
 - `npm run off:frame` for Test on your localhost
-- `npm run deploy:frame --stage <your stage>`
+- `npm run deploy:frame --stage`
 
 ---
 

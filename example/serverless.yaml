@@ -20,30 +20,30 @@ functions:
           path: /root/{proxy+}
           method: ANY
           cors: true
-  testdic:
-    handler: src/testdic/handler.graphql
+  BookSchema:
+    handler: src/BookSchema/handler.graphql
     memorySize: 512
     timeout: 5
     events:
       - http:
-          path: /testdic
+          path: /BookSchema
           method: ANY
           cors: true
       - http:
-          path: /testdic/{proxy+}
+          path: /BookSchema/{proxy+}
           method: ANY
           cors: true
-  testtest:
-    handler: src/testtest/handler.graphql
+  DogSchema:
+    handler: src/DogSchema/handler.graphql
     memorySize: 512
     timeout: 5
     events:
       - http:
-          path: /testtest
+          path: /DogSchema
           method: ANY
           cors: true
       - http:
-          path: /testtest/{proxy+}
+          path: /DogSchema/{proxy+}
           method: ANY
           cors: true
 
