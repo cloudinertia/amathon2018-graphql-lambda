@@ -1,24 +1,36 @@
-import { microGraphql, microGraphiql } from "apollo-server-micro";
-import micro, { send } from "micro";
-import { get, post, router } from "microrouter";
-import serverless from "serverless-http";
+// const server = require("apollo-server-lambda");
+var { graphqlExpress } = require("apollo-server-express");
+var bodyParser = require("body-parser");
+var schema = require("./src/schema.js");
 
-let schema = "./src/schema";
+// // if (process.env.NODE_ENV === "sls") {
+// //   schema = "./src/" + process.env.NAME + "/index.js";
+// // }
 
-if (process.env.NODE_ENV === "sls") {
-  schema = "./src/" + process.env.NAME + "/index.js";
-}
+// // const app = express();
 
-const graphqlHandler = microGraphql({ schema });
-const graphiqlHandler = microGraphiql({ endpointURL: "/graphql" });
+// // // bodyParser is needed just for POST.
+// // app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
-const server = micro(
-  router(
-    get("/graphql", graphqlHandler),
-    post("/graphql", graphqlHandler),
-    get("/graphiql", graphiqlHandler),
-    (req, res) => send(res, 404, "not found")
-  )
-);
+// exports.graphql = server.graphqlLambda((event, context) => {
+//   const headers = event.headers;
+//   const functionName = context.functionName;
 
-exports.render = serverless(server);
+//   return {
+//     schema: schema,
+//     context: {
+//       headers,
+//       functionName,
+//       event,
+//       context
+//     }
+//   };
+// });
+
+var serverless = require("serverless-http");
+var express = require("express");
+var app = express();
+
+app.use("/graphql", bodyParser.json(), graphqlExpress({ schema: schema }));
+
+exports.graphql = serverless(app);

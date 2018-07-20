@@ -9,21 +9,20 @@ provider:
 
 plugins:
     - serverless-offline
-    - serverless-webpack
 
 
 package:
   exclude:
     - dist/assets/**
     - public/**
-    - src/**
     - tests/**
   include:
     - dist
+    - src
 
 functions:
-  renderer:
-    handler: handler.render
+  graphql:
+    handler: handler.graphql
     memorySize: 512
     timeout: 5
     events:
@@ -41,4 +40,3 @@ functions:
 custom:
   serverless-offline:
     port: 4000
-  webpackIncludeModules: true

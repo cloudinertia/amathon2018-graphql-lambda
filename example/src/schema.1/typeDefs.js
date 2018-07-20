@@ -4,4 +4,4 @@ const typeDefs = `
     type Book { title: String, author: String }
   `;
 
-export default typeDefs;
+module.exports = typeDefs;
