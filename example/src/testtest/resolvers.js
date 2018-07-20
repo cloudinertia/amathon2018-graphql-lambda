@@ -1,16 +1,16 @@
-const books = [
+const dogs = [
   {
-    title: "Harry Potter and the Sorcerer's stone",
-    author: "J.K. Rowling"
+    name: "bbobbi",
+    kind: "poodle"
   },
   {
-    title: "Jurassic Park",
-    author: "Michael Crichton"
+    name: "nabi",
+    kind: "Beagle"
   }
 ];
 // The resolvers
 const resolvers = {
-  Query: { books: () => books }
+  Query: { dogs: () => dogs }
 };
 
 module.exports = resolvers;

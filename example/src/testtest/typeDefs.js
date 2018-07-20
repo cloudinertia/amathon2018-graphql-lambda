@@ -1,7 +1,7 @@
 // The GraphQL schema in string form
 const typeDefs = `
-    type Query { books: [Book] }
-    type Book { title: String, author: String }
+    type Query { dog: [Dog] }
+    type Dog { name: String, kind: String }
   `;
 
 module.exports = typeDefs;
