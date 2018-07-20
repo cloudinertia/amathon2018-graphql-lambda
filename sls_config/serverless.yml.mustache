@@ -11,7 +11,7 @@ provider:
 
 functions:
   {{#schemas}}
-  renderer:
+  {{.}}:
     handler: schemas.{{.}}.handler
     memorySize: 512
     timeout: 5
@@ -23,6 +23,10 @@ functions:
   {{/schemas}}
 
 {{resources}}
+
+package:
+  exclude:
+    - schemas/{{exclude}}/**
 
 plugins:
   - serverless-offline
