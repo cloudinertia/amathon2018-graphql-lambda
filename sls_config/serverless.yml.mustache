@@ -1,0 +1,32 @@
+service: "amathon-hands-on"
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage}
+  region: ap-northeast-2
+  environment:
+    NODE_ENV: ${opt:stage}
+    ASSETS_URL: "https://s3.ap-northeast-2.amazonaws.com/amathon-hands-on-${opt:stage}"
+
+functions:
+  {{#schemas}}
+  renderer:
+    handler: schemas.{{.}}.handler
+    memorySize: 512
+    timeout: 5
+    events:
+      - http:
+          path: /{{.}}
+          method: ANY
+          cors: true
+  {{/schemas}}
+
+{{resources}}
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    port: 4000

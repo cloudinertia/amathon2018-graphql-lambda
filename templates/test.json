@@ -1,0 +1,7 @@
+{
+    "schemas":[
+        { "name":"Dashboard" },
+        { "name":"Classroom" }
+    ],
+    "resources":"demo"
+}
