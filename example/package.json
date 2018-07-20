@@ -9,7 +9,10 @@
   "scripts": {
     "build": "./node_modules/.bin/babel  ./src --experimental --source-maps-inline -d ./dist",
     "prestart": "npm run build",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "deploy": "sls deploy",
+    "off":"sls offline start",
+    "delete":"sls remove"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.6",

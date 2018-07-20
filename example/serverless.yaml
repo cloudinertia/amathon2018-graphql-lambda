@@ -2,7 +2,6 @@ service: "amathon-hands-on-jinho1"
 
 provider:
   name: aws
-  profile: jinho
   runtime: nodejs8.10
   stage: dev
   region: ap-northeast-2
@@ -27,15 +26,26 @@ functions:
     timeout: 5
     events:
       - http:
-          path: /
+          path: /root
           method: ANY
           cors: true
       - http:
-          path: /{proxy+}
+          path: /root/{proxy+}
           method: ANY
           cors: true
-
-
+  testdic:
+    handler: src/testdic/handler.graphql
+    memorySize: 512
+    timeout: 5
+    events:
+      - http:
+          path: /testdic
+          method: ANY
+          cors: true
+      - http:
+          path: /testdic/{proxy+}
+          method: ANY
+          cors: true
 
 custom:
   serverless-offline:
