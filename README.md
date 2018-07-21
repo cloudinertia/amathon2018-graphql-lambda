@@ -44,10 +44,18 @@ Before start
 - `git clone https://github.com/cloudinertia/amathon2018-graphql-lambda`
 - `cd example && npm install`
 - check your AWS Credention if you have AWS Profile change [serverless.yaml]() of profile
-- Change schema if you want
-- `npm run off:frame` for Test on your localhost
-- `npm run deploy:frame --stage`
 
+---
+
+### How to Use
+
+- define schema at './schemas'(BookSchema and DogSchema are examples)
+- then `yarn off:frame` for localhost testing 
+- what framework.js do
+    - inject handler from schema and move to bundler folder
+    - autogen serverless.yml from schemas you defined
+- you can deploy through `yarn deploy:{STAGING_STATUS}`
+    - STAGING\_STATUS: dev,staging,prod
 ---
 
 ### Current Structure
