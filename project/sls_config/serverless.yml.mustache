@@ -22,7 +22,7 @@ functions:
           cors: true
   {{#schemas}}
   {{.}}:
-    handler: src/{{.}}/handler.graphql
+    handler: bundle/{{.}}/handler.graphql
     memorySize: 512
     timeout: 5
     events:

@@ -21,7 +21,7 @@ functions:
           method: ANY
           cors: true
   BookSchema:
-    handler: src/BookSchema/handler.graphql
+    handler: bundle/BookSchema/handler.graphql
     memorySize: 512
     timeout: 5
     events:
@@ -34,7 +34,7 @@ functions:
           method: ANY
           cors: true
   DogSchema:
-    handler: src/DogSchema/handler.graphql
+    handler: bundle/DogSchema/handler.graphql
     memorySize: 512
     timeout: 5
     events:
