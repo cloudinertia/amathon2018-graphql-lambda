@@ -1,6 +1,6 @@
 // The GraphQL schema in string form
 const typeDefs = `
-    type Query { dog: [Dog] }
+    type Query { dogs: [Dog] }
     type Dog { name: String, kind: String }
   `;
 

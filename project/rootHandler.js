@@ -1,12 +1,6 @@
 var { graphqlExpress } = require("apollo-server-express");
 var bodyParser = require("body-parser");
-var schema = require("./src/schema");
-
-/*
-if (process.env.NAME) {
-  schema = "./src/" + process.env.NAME + "/index.js";
-}
-*/
+var schema = require("./src/RootSchema");
 
 var serverless = require("serverless-http");
 var express = require("express");

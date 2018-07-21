@@ -7,8 +7,8 @@ provider:
   region: ap-northeast-2
 
 functions:
-  graphql:
-    handler: handler.graphql
+  root:
+    handler: rootHandler.graphql
     memorySize: 512
     timeout: 5
     events:

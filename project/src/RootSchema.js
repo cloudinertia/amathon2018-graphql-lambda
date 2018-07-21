@@ -1,5 +1,5 @@
 const { makeExecutableSchema, mergeSchemas } = require("graphql-tools");
-const dirs = require("./getDirName.js");
+const dirs = getDirName(); 
 
 const schemas = [];
 dirs.forEach(dir => {
@@ -13,3 +13,12 @@ dirs.forEach(dir => {
 const resultschema = mergeSchemas({ schemas });
 
 module.exports = resultschema;
+
+function getDirName() {
+    const fs = require("fs");
+    const files = fs.readdirSync(__dirname);
+    const dirs = files.filter(file => {
+      return !/.+\.js/g.test(file);
+    });
+    return dirs
+}
