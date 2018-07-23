@@ -6,6 +6,8 @@
 
 다수의 Lambda 로 동작하는 GraphQL 기반의 마이크로서비스 아키텍쳐 API FrameWork 만들기
 
+[About Structure](https://docs.google.com/presentation/d/1gL5nBQQkbRtrjfCUQgTGOz-ejYRQ5ZErkLFEigoHv00/edit?usp=sharing)
+
 ---
 
 ### Stack
@@ -50,21 +52,18 @@ Before start
 ### How to Use
 
 - define schema at './schemas'(BookSchema and DogSchema are examples)
-- then `yarn off:frame` for localhost testing 
+- then `yarn off:frame` for localhost testing
 - what framework.js do
-    - inject handler from schema and move to bundler folder
-    - autogen serverless.yml from schemas you defined
+  - inject handler from schema and move to bundler folder
+  - autogen serverless.yml from schemas you defined
 - you can deploy through `yarn deploy:{STAGING_STATUS}`
-    - STAGING\_STATUS: dev,staging,prod
+  - STAGING_STATUS: dev,staging,prod
+
 ---
 
 ### Current Structure
 
 ![Imgur](https://i.imgur.com/p5sUOLr.png)
-
----
-
-Todo Structure
 
 ---
 
